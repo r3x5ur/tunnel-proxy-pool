@@ -1,0 +1,14 @@
+version: '3'
+services:
+  openresty:
+   build: .
+   restart: always
+   ports:
+     - '127.0.0.1:63000:63000'
+   environment:
+       - TZ=Asia/Shanghai
+   volumes:
+     - ./conf:/usr/local/openresty/nginx/conf
+     - ./logs:/usr/local/openresty/nginx/logs
+     - ./vhost:/etc/nginx/conf.d
+     - ./site:/etc/nginx/site
